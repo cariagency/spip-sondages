@@ -1,0 +1,23 @@
+[(#ID_OBJET|oui)
+	[(#AUTORISER{modifier,optionsondage,#ID_OPTION_SONDAGE}|sinon_interdire_acces)]
+][(#ID_OBJET|non)
+	[(#AUTORISER{creer,optionsondage}|sinon_interdire_acces)]
+]
+ 
+<div class='cadre-formulaire-editer'>
+<div class="entete-formulaire">
+[(#SET{titre,#INFO_TITRE{option_sondage,#ID_OPTION_SONDAGE}})]
+	[(#ID_OPTION_SONDAGE|?{<:option_sondage:icone_modifier_option_sondage:>,<:option_sondage:icone_creer_option_sondage:>})]
+	<h1>[(#GET{titre}|sinon{<:info_sans_titre:>})]</h1>
+</div>
+
+[(#ENV{retourajax,''}|oui)
+	#SET{redirect,'javascript:if (window.jQuery) jQuery(".entete-formulaire .retour a").followLink();'}
+	<div class="ajax">
+]
+		[(#FORMULAIRE_EDITER_OPTION_SONDAGE{#ENV{id_option_sondage,oui}, '', #ENV{associer_objet}})]
+[(#ENV{retourajax,''}|oui)
+	</div>
+	<script type="text/javascript">/*<!\[CDATA\[*/reloadExecPage('#ENV{exec}');/*\]\]>*/</script>
+]
+</div>

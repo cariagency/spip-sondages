@@ -1,0 +1,10 @@
+#FORMULAIRE_RECHERCHE_ECRIRE{#SELF,ajax}
+<div class="nettoyeur"></div>
+
+<INCLURE{fond=prive/objets/liste/sondages_en_cours, titre=<:sondage:titre_sondages_en_cours:>, env, ajax}>
+<INCLURE{fond=prive/objets/liste/sondages_a_venir, titre=<:sondage:titre_sondages_a_venir:>,env, ajax}>
+<INCLURE{fond=prive/objets/liste/sondages_termines, titre=<:sondage:titre_sondages_termines:>,env, ajax}>
+
+[(#AUTORISER{creer,sondage})
+	[(#URL_ECRIRE{sondage_edit,new=oui}|icone_verticale{<:sondage:icone_creer_sondage:>,sondage,new,right})]
+]

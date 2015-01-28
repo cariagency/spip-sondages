@@ -1,0 +1,19 @@
+<div class="formulaire_spip formulaire_sondage">
+
+[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+
+[<INCLURE{fond=sondage/resultats}{id_sondage}{merci=oui}>(#ENV{message_ok})]
+
+[<form method="post" action="#ENV{action}">
+<div>
+#ACTION_FORMULAIRE{#ENV{action}}
+<ul>
+[(#GENERER_SAISIES{#ENV{_saisies}})]
+</ul>
+<p class="boutons"><input type="submit" class="submit valider" value="<:sondage:bouton_valider:>" /></p>
+</div>
+</form>(#ENV{editable})]
+
+[<INCLURE{fond=sondage/resultats}{id_sondage}>(#ENV{afficher_resultats}|=={oui}|oui)]
+
+</div>

@@ -1,0 +1,11 @@
+<BOUCLE_sondage_en_cours(SONDAGES) {id_sondage} {sondages_en_cours}>
+<div class="ajax">
+[(#FORMULAIRE_SONDAGE{#ID_SONDAGE})]
+</div>
+</BOUCLE_sondage_en_cours>
+<BOUCLE_sondage_termine(SONDAGES) {id_sondage} {sondages_termines}>
+<div class="formulaire_spip formulaire_sondage">
+[(#INCLURE{fond=sondage/resultats}{id_sondage})]
+</div>
+</BOUCLE_sondage_termine>
+<//B_sondage_en_cours>

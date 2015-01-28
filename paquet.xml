@@ -1,0 +1,29 @@
+<paquet
+	prefix="sondage"
+	categorie="divers"
+	version="1.0.0"
+	etat="stable"
+	compatibilite="[3.0.16;3.0.*]"
+	logo="prive/themes/spip/images/sondage-64.png"
+	documentation=""
+	schema="1.0.0" 
+>
+
+	<nom>Sondage</nom>
+
+	<auteur lien="http://www.carhi.com">Agence Cahri</auteur>
+	<auteur lien="http://www.studiomaiis.net">Pierre Basson</auteur>
+
+	<licence>GNU/GPL</licence>
+	
+	<necessite nom="saisies"  compatibilite="[1.24.0;]" />
+	<necessite nom="saisies_maiis" compatibilite="[3.0.0;]" />
+
+	<pipeline nom="autoriser" inclure="sondage_autorisations.php" />
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/sondage.php" />
+	<pipeline nom="declarer_tables_interfaces" inclure="base/sondage.php" />
+	<pipeline nom="post_edition" inclure="sondage_pipelines.php" />
+
+	<menu nom="sondages" titre="sondage:titre_sondages" parent="menu_edition" icone="images/sondage-16.png" action="sondages" />
+
+</paquet>

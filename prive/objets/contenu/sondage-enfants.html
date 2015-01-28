@@ -1,0 +1,5 @@
+<INCLURE{fond=prive/objets/liste/options_sondage, sinon=<:option_sondage:info_aucun_option_sondage:>, env, ajax}>
+
+[(#AUTORISER{creer,option_sondage})
+	[(#URL_ECRIRE{option_sondage_edit,new=oui&id_sondage=#ID_SONDAGE}|icone_verticale{<:option_sondage:texte_ajouter_option_sondage:>,option_sondage,new,right})]
+]

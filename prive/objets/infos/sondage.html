@@ -1,0 +1,29 @@
+<BOUCLE_sondage(SONDAGES) {id_sondage=#ENV{id}}>
+<div class="infos">
+[(#SET{texte_objet,<:sondage:titre_sondage:>})]
+<div class="numero"><:titre_cadre_numero_objet{objet=#GET{texte_objet}}:><p>#ID_SONDAGE</p></div>
+
+[<div class="numero"><:sondage:th_nb_reponses:><p>(#NB_REPONSES{sondage,#ID_SONDAGE})</p></div>]
+
+[(#AUTORISER{viderreponses,sondage,#ID_SONDAGE}|oui)
+[(#SELF|icone_horizontale{<:sondage:vider_reponses_sondage:>,sondage,del,"",onclick="jQuery('#vider-#ID_SONDAGE').toggle('fast');return false;"})]
+<div id="vider-#ID_SONDAGE" class="none-js">
+#BOITE_OUVRIR{"","notice"}
+<p><:sondage:etes_vous_surs:></p>
+[(#BOUTON_ACTION{<:oui:>,#URL_ACTION_AUTEUR{vider_reponses_sondage,#ID_SONDAGE,#ID_SONDAGE|generer_url_entite{sondage}}})]
+#BOITE_FERMER
+</div>
+]
+
+[(#AUTORISER{supprimer,sondage,#ID_SONDAGE}|oui)
+[(#SELF|icone_horizontale{<:sondage:supprimer_sondage:>,sondage,del,"",onclick="jQuery('#suppression-#ID_SONDAGE').toggle('fast');return false;"})]
+<div id="suppression-#ID_SONDAGE" class="none-js">
+#BOITE_OUVRIR{"","notice"}
+<p><:sondage:etes_vous_surs:></p>
+[(#BOUTON_ACTION{<:oui:>,#URL_ACTION_AUTEUR{supprimer_sondage,#ID_SONDAGE,#URL_ECRIRE{sondages}}})]
+#BOITE_FERMER
+</div>
+]
+
+</div>
+</BOUCLE_sondage>

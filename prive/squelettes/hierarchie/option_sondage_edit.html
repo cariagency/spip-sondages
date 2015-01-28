@@ -1,0 +1,12 @@
+<!-- hierarchie -->
+<a href="#URL_ECRIRE{sondages}"><:sondage:titre_sondages:></a> &gt; <strong class="on">
+<BOUCLE_option_sondage(OPTIONS_SONDAGE) {id_option_sondage}>
+<BOUCLE_sondage(SONDAGES) {id_sondage}>
+[(#ID_SONDAGE|generer_url_entite{sondage}|lien_ou_expose{#TITRE|couper{80}})]
+</BOUCLE_sondage>
+</BOUCLE_option_sondage>
+<BOUCLE_sondage_2(SONDAGES) {id_sondage}>
+[(#ID_SONDAGE|generer_url_entite{sondage}|lien_ou_expose{#TITRE|couper{80}})]
+</BOUCLE_sondage_2>
+<//B_champ>
+ &gt; <strong class="on"><BOUCLE_option_sondage_titre(OPTIONS_SONDAGE) {id_option_sondage}>[(#TITRE)]</BOUCLE_option_sondage_titre><:ecrire:info_sans_titre:><//B_option_sondage_titre></strong>

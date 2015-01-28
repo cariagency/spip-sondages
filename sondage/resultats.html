@@ -1,0 +1,10 @@
+#CACHE{0}
+[<p class="reponse_formulaire reponse_formulaire_ok"><:sondage:merci:></p>(#ENV{merci}|oui)]
+<BOUCLE_sondage(SONDAGES) {id_sondage}>
+<dl class="sondage">
+<dt>#TITRE</dt>
+<BOUCLE_options(OPTIONS_SONDAGE) {id_sondage} {par ordre}>
+<dd>#TITRE : #POURCENTAGE_OPTION_SONDAGE%</dd>
+</BOUCLE_options>
+</dl>
+</BOUCLE_sondage>

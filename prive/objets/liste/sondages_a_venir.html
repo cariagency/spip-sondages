@@ -1,0 +1,43 @@
+[(#SET{defaut_tri,#ARRAY{
+	date_debut,1, 
+	date_fin,-1, 
+	nb_reponses,1, 
+	titre,1, 
+	id_sondage,1,
+	points,-1
+}})]<B_liste_sondages>
+#ANCRE_PAGINATION
+<div class="liste-objets">
+<table class="spip liste">
+	[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{sondage:info_1_sondage,sondage:info_nb_sondages}})</strong></caption>]
+	<thead>
+		<tr class="first_row">
+			<th class="picto" scope="col"></th>
+			<th class="titre" scope="col">[(#TRI{titre,<:sondage:th_titre:>,ajax})]</th>
+			<th class="date_debut" scope="col">[(#TRI{date_debut,<:sondage:th_date_debut:>,ajax})]</th>
+			<th class="date_fin" scope="col">[(#TRI{date_fin,<:sondage:th_date_fin:>,ajax})]</th>
+			<th class="nb_reponses droite" scope="col">[(#TRI{nb_reponses,<:sondage:th_nb_reponses:>,ajax})]</th>
+			<th class="id" scope="col">[(#TRI{id_sondage,<:info_numero_abbreviation:>,ajax})]</th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_sondages(SONDAGES){recherche?}{sondages_a_venir}{tri #ENV{par,date_debut},#GET{defaut_tri}}{par date_debut}{pagination #ENV{nb,10}}>
+		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
+			<td class="picto">[(#CHEMIN_IMAGE{sondage-16.png}|balise_img)]</td>
+			<td class="titre principale">[(#LOGO_SONDAGE|image_reduire{20,26})]<a href="[(#ID_SONDAGE|generer_url_entite{sondage})]">[(#RANG). ]#TITRE</a></td>
+			<td class="date_debut">[(#DATE_DEBUT|affdate{d/m/Y})]</td>
+			<td class="date_fin">[(#DATE_FIN|affdate{d/m/Y})]</td>
+			<td class="nb_reponses droite">#NB_REPONSES{sondage,#ID_SONDAGE}</td>
+			<td class="id">[(#AUTORISER{modifier,sondage,#ID_SONDAGE}|?{
+				<a href="[(#URL_ECRIRE{sondage_edit,id_sondage=#ID_SONDAGE})]"><:info_numero_abbreviation:>#ID_SONDAGE</a>,
+				<:info_numero_abbreviation:>#ID_SONDAGE
+			})]</td>
+		</tr>
+	</BOUCLE_liste_sondages>
+	</tbody>
+</table>
+[<p class="pagination">(#PAGINATION{prive})</p>]
+</div>
+</B_liste_sondages>[
+<div class="liste-objets sondages caption-wrap"><strong class="caption">(#ENV*{sinon,""})</strong></div>
+]<//B_liste_sondages>

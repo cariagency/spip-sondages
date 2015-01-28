@@ -1,0 +1,33 @@
+<B_liste_option_sondage>
+<div class="liste-objets option_sondage">
+<table class="spip liste">
+	[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{option_sondage:info_1_option_sondage,option_sondage:info_nb_option_sondage}})</strong></caption>]
+	<thead>
+		<tr class="first_row">
+			<th class="titre" scope="col"><:option_sondage:th_titre:></th>
+			<th class="nb_reponses" scope="col" colspan="2"><:option_sondage:th_nb_reponses:></th>
+			<th></th>
+			<th></th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_option_sondage(OPTIONS_SONDAGE) {id_sondage} {par ordre}>
+		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
+			<td class="titre">[(#AUTORISER{modifier,option_sondage,#ID_OPTION_SONDAGE}|?{
+				<a href="[(#URL_ECRIRE{option_sondage_edit,id_option_sondage=#ID_OPTION_SONDAGE})]">#TITRE</a>,
+				#TITRE
+			})]</td>
+			<td width="60">[(#NB_REPONSES{option_sondage,#ID_OPTION_SONDAGE}|>{0}|?{x&nbsp;#NB_REPONSES{option_sondage,#ID_OPTION_SONDAGE}})]</td>
+			<td width="40" class="droite">[(#POURCENTAGE_OPTION_SONDAGE)%]</td>
+			<td width="16" style="text-align: center;">[<a href="#URL_ACTION_AUTEUR{monter_option_sondage,#ID_OPTION_SONDAGE,#URL_ECRIRE{sondage,id_sondage=#ID_SONDAGE}}"><img src="[(#CHEMIN_IMAGE{monter.png})]" alt="" /></a>(#COMPTEUR_BOUCLE|>{1}|oui)]</td>
+			<td width="16" style="text-align: center;">[<a href="#URL_ACTION_AUTEUR{descendre_option_sondage,#ID_OPTION_SONDAGE,#URL_ECRIRE{sondage,id_sondage=#ID_SONDAGE}}"><img src="[(#CHEMIN_IMAGE{descendre.png})]" alt="" /></a>(#COMPTEUR_BOUCLE|<{#TOTAL_BOUCLE}|oui)]</td>
+			<td width="16" style="text-align: center;"><a href="#URL_ACTION_AUTEUR{supprimer_option_sondage,#ID_OPTION_SONDAGE,#URL_ECRIRE{sondage,id_sondage=#ID_SONDAGE}}" onclick="return confirm('<:sondage:etes_vous_surs:>')"><img src="[(#CHEMIN_IMAGE{supprimer.png})]" alt="" /></a></td>
+		</tr>
+	</BOUCLE_liste_option_sondage>
+	</tbody>
+</table>
+</div>
+</B_liste_option_sondage>[
+<div class="liste-objets option_sondage caption-wrap"><strong class="caption">(#ENV*{sinon,""})</strong></div>
+]<//B_liste_option_sondage>

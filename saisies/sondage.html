@@ -1,0 +1,6 @@
+<select name="#ENV{nom}" id="champ_[(#ENV{nom}|saisie_nom2classe)]"[ class="(#ENV{class})"][ disabled="(#ENV{disable})"][ size="(#ENV{size})"][ (#ENV*{attributs})]>
+[(#ENV{cacher_option_intro}|non)<option value="">[(#ENV{option_intro})]</option>]
+<BOUCLE_sondages(SONDAGES) {sondages_en_cours} {par maj} {inverse}>
+<option value="#ID_SONDAGE"[(#ID_SONDAGE|=={#ENV{valeur}}|oui)selected="selected"]>#TITRE</option>
+</BOUCLE_sondages>
+</select>
