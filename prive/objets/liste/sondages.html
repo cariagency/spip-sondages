@@ -21,7 +21,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<BOUCLE_liste_sondages(SONDAGES){recherche?}{tri #ENV{par,date_debut},#GET{defaut_tri}}{par date_debut}{pagination #ENV{nb,10}}>
+	<BOUCLE_liste_sondages(SONDAGES){recherche?}{tri #ENV{par,date_debut},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
 			<td class="picto">[(#CHEMIN_IMAGE{sondage-16.png}|balise_img)]</td>
 			<td class="titre principale">[(#LOGO_SONDAGE|image_reduire{20,26})]<a href="[(#ID_SONDAGE|generer_url_entite{sondage})]">[(#RANG). ]#TITRE</a></td>
