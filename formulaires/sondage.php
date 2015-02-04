@@ -62,9 +62,7 @@ function formulaires_sondage_traiter_dist($id_sondage) {
 		$res['message_erreur'] = _T('sondage:erreur_cookie');
 	} else {
 		$id_option_sondage = intval(_request('id_option_sondage'));
-		sql_insertq('spip_reponses_sondage', array('id_sondage' => $id_sondage, 'id_option_sondage' => $id_option_sondage));
-		sondage_mettre_a_jour_nb_reponses_sondage($id_sondage);
-		spip_setcookie('sondage_'.$id_sondage, 1, time() + 3600 * 24 * 365); // 1 an
+		sondage_voter($id_sondage, $id_option_sondage);
 		$res['message_ok'] = ' ';
 		$res['editable'] = false;
 	}

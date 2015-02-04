@@ -38,6 +38,14 @@ function autoriser_sondage_viderreponses_dist($faire, $type, $id, $qui, $opt) {
 	return false;
 }
 
+function autoriser_sondage_voter_dist($faire, $type, $id, $qui, $opt) {
+	if (isset($_COOKIE['sondage_'.$id])) {
+		return false;
+	} else {
+		return true;
+	}
+}
+
 // -----------------
 // Objet option_sondage
 

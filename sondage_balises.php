@@ -48,3 +48,17 @@ function calculer_POURCENTAGE_OPTION_SONDAGE($id_sondage, $id_option_sondage, $p
 	}
 }
 
+function balise_URL_VOTER($p) {
+	$_id_sondage = champ_sql('id_sondage', $p);
+	$_id_option_sondage = champ_sql('id_option_sondage', $p);
+	$p->code = "calculer_URL_VOTER($_id_sondage,$_id_option_sondage)";
+	$p->interdire_scripts = false;
+	return $p;
+}
+
+function calculer_URL_VOTER($id_sondage, $id_option_sondage) {
+	$lang = boutique_recuperer_langue($lang);
+	include_spip('inc/filtres_mini');
+	return url_absolue(generer_url_public('panier', 'etape=panier&lang='.$lang, true));
+}
+
