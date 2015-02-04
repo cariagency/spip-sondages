@@ -223,3 +223,26 @@ On utilisera l’un ou autre des critères suivants pour indiquer comment on sé
 
 
 
+# Autre intégration
+
+Il est possible de ne pas utiliser de formulaire CVT pour faire voter les internautes, dans ce cas il faut utiliser la balise `#URL_VOTER{retour}` placée dans une boucle `OPTIONS_SONDAGE` :
+
+```
+<BOUCLE_sondages(SONDAGES) {sondages_en_cours}>
+<p>
+#TITRE<br />
+<BOUCLE_test(CONDITION) {si #AUTORISER{voter,sondage,#ID_SONDAGE}}>
+<BOUCLE_options(OPTIONS_SONDAGE) {id_sondage} {par ordre}>
+<a href="#URL_VOTER{#URL_SITE_SPIP}">#TITRE</a>
+</BOUCLE_options>
+</BOUCLE_test>
+<BOUCLE_resultats(OPTIONS_SONDAGE) {id_sondage} {par ordre}>
+<span>#TITRE : #POURCENTAGE_OPTION_SONDAGE%</span>
+</BOUCLE_resultats>
+<//B_test>
+</p>
+</BOUCLE_sondages>
+```
+
+Une boucle de test sur l'autorisation de voter est nécessaire.
+
