@@ -6,10 +6,12 @@ include_spip('sondage_balises');
 include_spip('sondage_criteres');
 
 function sondage_voter($id_sondage, $id_option_sondage) {
-	$verification = sql_countsel('spip_options_sondage', 'id_sondage='.intval($id_sondage).' AND id_option_sondage='.intval($id_option_sondage));
+	$verification = (intval($id_option_sondage) == 0 || sql_countsel('spip_options_sondage', 'id_sondage='.intval($id_sondage).' AND id_option_sondage='.intval($id_option_sondage)));
 	if ($verification) {
-		sql_insertq('spip_reponses_sondage', array('id_sondage' => $id_sondage, 'id_option_sondage' => $id_option_sondage));
-		sondage_mettre_a_jour_nb_reponses_sondage($id_sondage);
+		if (intval($id_option_sondage) > 0) {
+			sql_insertq('spip_reponses_sondage', array('id_sondage' => $id_sondage, 'id_option_sondage' => $id_option_sondage));
+			sondage_mettre_a_jour_nb_reponses_sondage($id_sondage);
+		}
 		spip_setcookie('sondage_'.$id_sondage, 1, time() + 3600 * 24 * 365); // 1 an
 	}
 }

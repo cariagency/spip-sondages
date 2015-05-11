@@ -44,7 +44,7 @@ function calculer_POURCENTAGE_OPTION_SONDAGE($id_sondage, $id_option_sondage, $p
 		$pourcentage = round(($nb_reponses_option / $nb_reponses) * 100, $precision);
 		return $pourcentage;
 	} else {
-		return '';
+		return 0;
 	}
 }
 
