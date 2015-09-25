@@ -35,6 +35,8 @@ function formulaires_sondage_identifier_dist($id_sondage) {
 }
 
 function formulaires_sondage_charger_dist($id_sondage) {
+	include_spip('inc/cookie');
+	spip_setcookie('sondage_test', 'test', time() + 60 * 60 * 24 * 90);
 	$valeurs = array();
 	$maintenant = date('Y-m-d H:i:s');
 	$verification = sql_countsel('spip_sondages', 'date_debut<='.sql_quote($maintenant).' AND date_fin>='.sql_quote($maintenant));
