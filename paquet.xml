@@ -1,9 +1,9 @@
 <paquet
 	prefix="sondage"
 	categorie="divers"
-	version="1.0.1"
+	version="1.0.2"
 	etat="stable"
-	compatibilite="[3.0.16;3.0.*]"
+	compatibilite="[3.0.16;3.1.*]"
 	logo="prive/themes/spip/images/sondage-64.png"
 	documentation=""
 	schema="1.0.0" 
@@ -16,8 +16,9 @@
 
 	<licence>GNU/GPL</licence>
 	
-	<necessite nom="saisies"  compatibilite="[1.24.0;]" />
+	<necessite nom="saisies" compatibilite="[2.5.29;]" />
 	<necessite nom="saisies_maiis" compatibilite="[3.0.0;]" />
+	<necessite nom="verifier" compatibilite="[1.0.9;]"  />
 
 	<pipeline nom="autoriser" inclure="sondage_autorisations.php" />
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/sondage.php" />
