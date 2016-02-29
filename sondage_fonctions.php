@@ -102,6 +102,9 @@ function sondage_vider_reponses_sondage($id_sondage) {
 }
 
 function sondage_supprimer_sondage($id_sondage) {
+	include_spip('action/editer_logo');
+	logo_supprimer('sondage', $id_sondage, 'on');
+	logo_supprimer('sondage', $id_sondage, 'off');
 	sql_delete('spip_sondages', 'id_sondage='.intval($id_sondage));
 	$options_sondage = sql_select('id_option_sondage', 'spip_options_sondage', 'id_sondage='.intval($id_sondage));
 	if (sql_count($options_sondage) > 0) {

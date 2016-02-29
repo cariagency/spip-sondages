@@ -1,7 +1,7 @@
 <paquet
 	prefix="sondage"
 	categorie="divers"
-	version="1.0.2"
+	version="1.0.3"
 	etat="stable"
 	compatibilite="[3.0.16;3.1.*]"
 	logo="prive/themes/spip/images/sondage-64.png"
