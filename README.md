@@ -129,9 +129,9 @@ Exemple pour afficher les sondages terminés :
 </BOUCLE_sondages_terminees>
 ```
 
-### Modèle
+### Contenu d'article ou de rubrique
 
-Il est possible d'insérer un modèle dans les contenus. Le code à insérer est `<sondageXX>` où `XX` correspond à l'`id_sondage` du sondage.
+Il est possible d'insérer un sondage dans les contenus. Le code à insérer est `<formulaire|sondage|id_sondage=XX>` où `XX` correspond à l'identifiant du sondage.
 
 ### Saisie sondage
 
